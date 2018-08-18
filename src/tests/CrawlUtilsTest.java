@@ -48,5 +48,16 @@ public class CrawlUtilsTest {
         assert urlMap.containsKey("http://www.example.com");
     }
 
+    @Test
+    public void testGetNextListUrl() {
+
+        HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
+        urlMap.put("http://example.com", false);
+
+        CrawlUtils crawlUtils = new CrawlUtils();
+        String url = crawlUtils.getNextListUrl(urlMap);
+
+        assert url.equals("http://example.com");
+    }
 
 }

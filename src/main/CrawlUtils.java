@@ -104,7 +104,7 @@ public class CrawlUtils {
             return urls;
     }
 
-   String getNextListUrl(HashMap<String, Boolean> urls) {
+   public String getNextListUrl(HashMap<String, Boolean> urls) {
 
         //make sure the the hashmap is populated as to avoid null pointer exceptions.
         if (urls != null && !urls.isEmpty()) {
@@ -131,10 +131,10 @@ public class CrawlUtils {
 
     private boolean initialUrlIsValid(String initialUrl) {
         try {
-            URL url = new URL(initialUrl);
+           URL url = new URL(initialUrl);
             return true;
         } catch (MalformedURLException e) {
-            ExceptionHandling.handleMalformedURLException("The inputted url is invalid.", e, true);
+            ExceptionHandling.handleMalformedURLException("The input url is invalid.", e, true);
             return false;
         }
     }

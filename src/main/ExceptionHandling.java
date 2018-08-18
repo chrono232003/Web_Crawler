@@ -13,7 +13,10 @@ public class ExceptionHandling {
 
     public static void handleMalformedURLException (String message, MalformedURLException e, Boolean hardFail) {
 
+
+
         System.out.println(message);
+
 
         if (hardFail) {
             System.exit(1);

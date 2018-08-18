@@ -5,6 +5,8 @@ This program was developed to take in a url as a parameter and find all links wi
 
 You can run the program and return a list via the unit test "testCrawlSuccess()" by adding a domain of your choice and running in the IDE of your choice. The method in under src/tests/CrawlTest.
 
+NOTE: This program uses a library called jsoup for document fetching and parsing. The jar file is included in the lib folder. You may need to add as a project resource in your IDE before using.
+
 Since it is powered by JUnit and has the Test annotation, the IDE should allow run functionality.
 
 ex:
