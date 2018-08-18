@@ -1,3 +1,6 @@
+package tests;
+
+import main.Crawl;
 import org.junit.jupiter.api.Test;
 
 public class CrawlTest {
