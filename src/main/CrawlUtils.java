@@ -6,7 +6,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.beans.ExceptionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -52,10 +51,11 @@ public class CrawlUtils {
             }
 
             System.out.println(finalUrlList(urlMap));
+
         }
     }
 
-    Document getDocumentFromUrl(String url) {
+    public Document getDocumentFromUrl(String url) {
 
         //handle a malformed url exception before entering the 3rd party jsoup logic.
         try {
@@ -80,7 +80,7 @@ public class CrawlUtils {
 
     }
 
-    HashMap updateUrlList(Document doc, HashMap<String, Boolean> urls) {
+    public HashMap updateUrlList(Document doc, HashMap<String, Boolean> urls) {
 
         //grab all links from the document and store within the urlMap
         Elements linksOnPage = doc.select("a[href]");

@@ -21,7 +21,7 @@ public void testCrawlSuccess() {
 
 The power behind this program is an API library called "jsoup" which allows easy extraction of a webpage source DOM. Within, we are able to extract information such as urls and links.
 
-The program is Started under the Crawl class which uses other utility classes such as CrawlUtils and a exception class for custom handling called ExceptionHandling.
+The program is started under the Crawl class which uses other utility classes such as CrawlUtils and a exception class for custom handling called ExceptionHandling.
 
 /****************************/
 
