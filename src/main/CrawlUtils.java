@@ -82,16 +82,24 @@ public class CrawlUtils {
 
     HashMap updateUrlList(Document doc, HashMap<String, Boolean> urls) {
 
+        //grab all links from the document and store within the urlMap
         Elements linksOnPage = doc.select("a[href]");
             for (Element link : linksOnPage) {
-
                 String linkString = link.absUrl("href");
-
                 //though a hashmap has unique keys, we will still have to check for dups to not override the value.
                 if (!urls.containsKey(linkString)) {
                     urls.put(linkString, setUrlCrawlStatus(linkString, INITIAL_URL));
                 }
             }
+
+        //grab all images from the document and store within the urlMap
+        Elements imagesOnPage = doc.select("img");
+        for (Element image : linksOnPage) {
+            String imageString = image.absUrl("href");
+            //set the image to true so that the iterator does not try to crawl the image url.
+                urls.put(imageString, true);
+
+        }
 
             return urls;
     }
