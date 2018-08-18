@@ -1,5 +1,7 @@
 package main;
 
+import org.jsoup.HttpStatusException;
+
 import java.net.MalformedURLException;
 
 /**
@@ -9,12 +11,22 @@ import java.net.MalformedURLException;
 
 public class ExceptionHandling {
 
-    public static void handleMalformedURLException (String message, MalformedURLException e) {
+    public static void handleMalformedURLException (String message, MalformedURLException e, Boolean hardFail) {
 
         System.out.println(message);
-        e.printStackTrace();
+
+        if (hardFail) {
+            System.exit(1);
+        }
 
     }
+
+    public static void handleHttpStatusException (String message, HttpStatusException e) {
+
+        System.out.println(message);
+
+    }
+
 
     public static void handleException (String message, Exception e) {
 

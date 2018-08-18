@@ -8,14 +8,14 @@ public class CrawlTest {
     @Test
     public void testCrawlSuccess() {
 
-        Crawl crawl = new Crawl("http://greatoldgames.com");
+        Crawl crawl = new Crawl("http://google.com");
 
     }
 
     @Test
     public void testCrawlMalformedURLException() {
 
-       // Crawl crawl = new Crawl("htt://google.com");
+        Crawl crawl = new Crawl("htt://google.com");
 
     }
 
