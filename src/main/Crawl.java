@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
 public class Crawl {
 
     //constructor (Takes the initial URL as a param)

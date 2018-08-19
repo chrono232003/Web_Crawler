@@ -2,8 +2,8 @@ package tests;
 
 import main.CrawlUtils;
 import org.jsoup.Jsoup;
-import org.junit.jupiter.api.Test;
 import org.jsoup.nodes.Document;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.File;

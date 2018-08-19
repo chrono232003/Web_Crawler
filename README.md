@@ -14,7 +14,8 @@ ex:
 @Test
 public void testCrawlSuccess() {
 
-    Crawl crawl = new Crawl("http://google.com");
+    //returns an arraylist of all urls that are found from the provided domain.
+    new Crawl("http://google.com");
 
 }
 

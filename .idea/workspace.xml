@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8635403-e32f-49b8-a1b0-0e942f7f6928" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web_Crawler/main/CrawlUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web_Crawler/main/CrawlUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlUtilsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlUtilsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Crawl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Crawl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/CrawlUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CrawlUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ExceptionHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ExceptionHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/CrawlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CrawlTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests/CrawlUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CrawlUtilsTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CrawlTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CrawlTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/CrawlTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
@@ -38,7 +34,7 @@
       <file leaf-file-name="CrawlUtilsTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/CrawlUtilsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
+            <state relative-caret-position="492">
               <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -49,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrawlUtils.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CrawlUtils.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/CrawlUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="136" column="68" selection-start-line="136" selection-start-column="68" selection-end-line="136" selection-end-column="68" />
+            <state relative-caret-position="510">
+              <caret line="162" column="20" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#521#538#0" expanded="true" />
@@ -66,8 +62,8 @@
       <file leaf-file-name="Crawl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Crawl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+            <state relative-caret-position="119">
+              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -75,11 +71,8 @@
       <file leaf-file-name="ExceptionHandling.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ExceptionHandling.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-69">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -120,10 +113,10 @@
         <option value="$PROJECT_DIR$/src/main/Crawl.java" />
         <option value="$PROJECT_DIR$/src/main/CrawlExt.java" />
         <option value="$PROJECT_DIR$/src/tests/testHTML.html" />
-        <option value="$PROJECT_DIR$/src/tests/CrawlUtilsTest.java" />
-        <option value="$PROJECT_DIR$/src/main/CrawlUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/ExceptionHandling.java" />
         <option value="$PROJECT_DIR$/src/tests/CrawlTest.java" />
+        <option value="$PROJECT_DIR$/src/tests/CrawlUtilsTest.java" />
+        <option value="$PROJECT_DIR$/src/main/ExceptionHandling.java" />
+        <option value="$PROJECT_DIR$/src/main/CrawlUtils.java" />
       </list>
     </option>
   </component>
@@ -199,7 +192,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CrawlTest.testCrawlMalformedURLException">
+  <component name="RunManager" selected="JUnit.CrawlUtilsTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -365,11 +358,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CrawlUtilsTest" />
+        <item itemvalue="JUnit.CrawlTest" />
         <item itemvalue="JUnit.CrawlTest.testCrawlMalformedURLException" />
         <item itemvalue="JUnit.CrawlUtilsTest.testUpdateUrlList" />
         <item itemvalue="JUnit.CrawlTest.testCrawlSuccess" />
-        <item itemvalue="JUnit.CrawlTest" />
-        <item itemvalue="JUnit.CrawlUtilsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -387,12 +380,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CrawlTest_testCrawlMalformedURLException - 2018.08.18 at 17h 21m 52s.xml">
-      <configuration name="CrawlTest.testCrawlMalformedURLException" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CrawlTest_testCrawlMalformedURLException - 2018.08.18 at 17h 22m 06s.xml">
-      <configuration name="CrawlTest.testCrawlMalformedURLException" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CrawlTest_testCrawlMalformedURLException - 2018.08.18 at 17h 22m 37s.xml">
       <configuration name="CrawlTest.testCrawlMalformedURLException" configurationId="JUnit" />
     </history-entry>
@@ -417,6 +404,12 @@
     <history-entry file="CrawlTest_testCrawlMalformedURLException - 2018.08.18 at 17h 38m 51s.xml">
       <configuration name="CrawlTest.testCrawlMalformedURLException" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CrawlTest - 2018.08.18 at 17h 41m 06s.xml">
+      <configuration name="CrawlTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CrawlUtilsTest - 2018.08.18 at 17h 41m 14s.xml">
+      <configuration name="CrawlUtilsTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -431,11 +424,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22657952" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22657952" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3291592" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26385927" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26385927" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -500,9 +493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,9 +518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -588,42 +575,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Crawl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/CrawlUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="136" column="68" selection-start-line="136" selection-start-column="68" selection-end-line="136" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#521#538#0" expanded="true" />
-            <element signature="e#4721#4729#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/ExceptionHandling.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/CrawlUtilsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#517#534#0" expanded="true" />
-            <element signature="e#1472#1489#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-69">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -634,6 +594,30 @@
           <folding>
             <element signature="e#142#143#0" expanded="true" />
             <element signature="e#202#203#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/CrawlUtilsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#517#534#0" expanded="true" />
+            <element signature="e#1472#1489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/CrawlUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="162" column="20" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#521#538#0" expanded="true" />
+            <element signature="e#4721#4729#0" expanded="true" />
           </folding>
         </state>
       </provider>

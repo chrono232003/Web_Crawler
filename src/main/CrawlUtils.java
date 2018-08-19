@@ -161,9 +161,6 @@ public class CrawlUtils {
         ArrayList<String> list = new ArrayList<String>();
         list.addAll(urls.keySet());
         return list;
-        //for (String key : urls.keySet()) {
-       //     list.add(key);
-       // }
     }
 
 }

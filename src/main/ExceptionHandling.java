@@ -1,7 +1,6 @@
 package main;
 
 import org.jsoup.HttpStatusException;
-
 import java.net.MalformedURLException;
 
 /**
