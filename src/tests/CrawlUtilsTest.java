@@ -56,6 +56,7 @@ public class CrawlUtilsTest {
 
         HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
         urlMap.put("http://example.com", false);
+        urlMap.put("http://example2.com", true);
 
         CrawlUtils crawlUtils = new CrawlUtils();
         String url = crawlUtils.getNextListUrl(urlMap);

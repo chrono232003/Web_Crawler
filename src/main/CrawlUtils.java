@@ -139,7 +139,7 @@ public class CrawlUtils {
         }
     }
 
-    private Boolean setUrlCrawlStatus(String urlString, String initialUrlString) {
+    Boolean setUrlCrawlStatus(String urlString, String initialUrlString) {
         if (urlString != null && initialUrlString != null) {
             try {
                 URL url = new URL(urlString);
@@ -149,11 +149,11 @@ public class CrawlUtils {
                 return !(url.getHost().equals(initialUrl.getHost()));
 
             } catch (MalformedURLException e) {
-                ExceptionHandling.handleMalformedURLException("One or both of the url string spassed into setURLCrawlStatus is malformed:" , e, false);
-                return null;
+                ExceptionHandling.handleMalformedURLException("One or both of the url strings passed into setURLCrawlStatus is malformed:" , e, false);
+                return true;
             }
         } else {
-            return null;
+            return true;
         }
     }
 
