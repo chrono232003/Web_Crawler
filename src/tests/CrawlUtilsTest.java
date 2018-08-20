@@ -45,6 +45,9 @@ public class CrawlUtilsTest {
         CrawlUtils crawlUtils = new CrawlUtils();
         urlMap = crawlUtils.updateUrlList(doc, urlMap);
 
+
+        System.out.println(urlMap);
+
         assert urlMap.containsKey("http://www.example.com");
     }
 

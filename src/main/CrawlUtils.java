@@ -84,27 +84,28 @@ public class CrawlUtils {
 
         //grab all links from the document and store within the urlMap
         Elements linksOnPage = doc.select("a[href]");
-            for (Element link : linksOnPage) {
-                String linkString = link.absUrl("href");
-                //though a hashmap has unique keys, we will still have to check for dups to not override the value.
-                if (!urls.containsKey(linkString)) {
-                    urls.put(linkString, setUrlCrawlStatus(linkString, INITIAL_URL));
-                }
+        for (Element link : linksOnPage) {
+            String linkString = link.absUrl("href");
+            //though a hashmap has unique keys, we will still have to check for dups to not override the value.
+            if (!urls.containsKey(linkString)) {
+                urls.put(linkString, setUrlCrawlStatus(linkString, INITIAL_URL));
             }
+        }
 
         //grab all images from the document and store within the urlMap
         Elements imagesOnPage = doc.select("img");
         for (Element image : imagesOnPage) {
-            String imageString = image.absUrl("href");
+            //String imageString = image.absUrl("img");
+            String imageString = image.attr("src");
             //set the image to true so that the iterator does not try to crawl the image url.
-                urls.put(imageString, true);
+            urls.put(imageString, true);
 
         }
 
-            return urls;
+        return urls;
     }
 
-   public String getNextListUrl(HashMap<String, Boolean> urls) {
+    public String getNextListUrl(HashMap<String, Boolean> urls) {
 
         //make sure the the hashmap is populated as to avoid null pointer exceptions.
         if (urls != null && !urls.isEmpty()) {
@@ -131,7 +132,7 @@ public class CrawlUtils {
 
     private boolean initialUrlIsValid(String initialUrl) {
         try {
-           URL url = new URL(initialUrl);
+            URL url = new URL(initialUrl);
             return true;
         } catch (MalformedURLException e) {
             ExceptionHandling.handleMalformedURLException("The input url is invalid.", e, true);
