@@ -6,35 +6,32 @@ import java.net.MalformedURLException;
 /**
  * This class is a generic exception handling class. since this project uses many try/catch blocks, found use in abstracting functionality.
  * the handle class with be static as to not have to create an instance for one method.
+ * TODO: give specific errors unique functionality if needed. Now, they just display a user friendly error.
  */
 
 public class ExceptionHandling {
 
-    public static void handleMalformedURLException (String message, MalformedURLException e, Boolean hardFail) {
+    public static void handleMalformedURLException (String message, MalformedURLException e) {
 
-
-
-        System.out.println(message);
-
-
-        if (hardFail) {
-            System.exit(1);
-        }
+        informUser(message, e);
 
     }
 
     public static void handleHttpStatusException (String message, HttpStatusException e) {
 
-        System.out.println(message);
+        informUser(message, e);
 
     }
 
 
     public static void handleException (String message, Exception e) {
 
-        System.out.println(message);
-        e.printStackTrace();
+        informUser(message, e);
 
+    }
+
+    private static void informUser(String message, Exception e) {
+        System.out.println(message + ": " + e.getMessage());
     }
 
 }

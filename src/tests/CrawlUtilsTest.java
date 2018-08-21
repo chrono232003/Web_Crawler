@@ -23,6 +23,16 @@ public class CrawlUtilsTest {
     }
 
     @Test
+    public void testGetDocumentMethodExceptionHanding() {
+        CrawlUtils crawlUtils = new CrawlUtils();
+        Document doc = crawlUtils.getDocumentFromUrl("htp://google.com");
+
+        assert doc != null;
+        assert doc.title() != null;
+    }
+
+
+    @Test
     public void testUpdateUrlList() {
 
         HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
@@ -50,6 +60,35 @@ public class CrawlUtilsTest {
 
         assert urlMap.containsKey("http://www.example.com");
     }
+
+    @Test
+    public void testUpdateUrlListBadLinkImageHandling() {
+
+        HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
+
+        StringBuilder contentBuilder = new StringBuilder();
+        try {
+            File file = new File("src/tests/testBadHTML.html");
+            BufferedReader in = new BufferedReader(new FileReader(file));
+            String str;
+            while ((str = in.readLine()) != null) {
+                contentBuilder.append(str);
+            }
+            in.close();
+        } catch (IOException e) {
+        }
+
+        String htmlString = contentBuilder.toString();
+        Document doc = Jsoup.parse(htmlString);
+
+        CrawlUtils crawlUtils = new CrawlUtils();
+        urlMap = crawlUtils.updateUrlList(doc, urlMap);
+
+
+        System.out.println(urlMap);
+
+    }
+
 
     @Test
     public void testGetNextListUrl() {

@@ -3,6 +3,8 @@ package tests;
 import main.Crawl;
 import org.junit.jupiter.api.Test;
 
+import java.net.MalformedURLException;
+
 
 public class CrawlTest {
 
@@ -11,6 +13,15 @@ public class CrawlTest {
 
         //returns an arraylist of all urls that are found from the provided domain.
         new Crawl("https://google.com");
+
+    }
+
+    @Test
+    public void testCrawlMalformedInitalUrl() {
+
+        //returns an arraylist of all urls that are found from the provided domain.
+        new Crawl("htps://google.com");
+
     }
 
 }

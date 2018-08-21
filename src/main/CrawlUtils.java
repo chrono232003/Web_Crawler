@@ -9,7 +9,9 @@ import org.jsoup.select.Elements;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class CrawlUtils {
 
@@ -61,7 +63,7 @@ public class CrawlUtils {
         try {
             new URL(url);
         } catch (MalformedURLException e) {
-            ExceptionHandling.handleMalformedURLException("Malformed Url exception in getDocumentFrom Url method: ", e, false);
+            ExceptionHandling.handleMalformedURLException("Malformed Url exception in getDocumentFrom Url method: ", e);
         }
 
         Document doc = null;
@@ -72,7 +74,7 @@ public class CrawlUtils {
             ExceptionHandling.handleException("This page is either not found or not accessible: ", e);
             return null;
         } catch (Exception e) {
-            ExceptionHandling.handleException("Error attempting to get the document from a Url: ", e);
+            ExceptionHandling.handleException("Error attempting to get the document from a Url: " + url, e);
             return null;
         }
 
@@ -87,7 +89,7 @@ public class CrawlUtils {
         for (Element link : linksOnPage) {
             String linkString = link.absUrl("href");
             //though a hashmap has unique keys, we will still have to check for dups to not override the value.
-            if (!urls.containsKey(linkString)) {
+            if (!linkString.equals("") && !urls.containsKey(linkString)) {
                 urls.put(linkString, setUrlCrawlStatus(linkString, INITIAL_URL));
             }
         }
@@ -97,7 +99,9 @@ public class CrawlUtils {
         for (Element image : imagesOnPage) {
             String imageString = image.attr("src");
             //set the image to true so that the iterator does not try to crawl the image url.
-            urls.put(imageString, true);
+            if (!imageString.equals("") && !urls.containsKey(imageString)) {
+                urls.put(imageString, true);
+            }
 
         }
 
@@ -134,7 +138,7 @@ public class CrawlUtils {
             URL url = new URL(initialUrl);
             return true;
         } catch (MalformedURLException e) {
-            ExceptionHandling.handleMalformedURLException("The input url is invalid.", e, true);
+            ExceptionHandling.handleMalformedURLException("The input url is invalid.", e);
             return false;
         }
     }
@@ -145,11 +149,13 @@ public class CrawlUtils {
                 URL url = new URL(urlString);
                 URL initialUrl = new URL(initialUrlString);
 
-                // return true if different domain, false if not
-                return !(url.getHost().equals(initialUrl.getHost()));
+                // return true if different domain, false if not. Also check if url a file we do not want to crawl.
+                return !(url.getHost().equals(initialUrl.getHost())) || checkForNonDocUrl(urlString);
+
+
 
             } catch (MalformedURLException e) {
-                ExceptionHandling.handleMalformedURLException("One or both of the url strings passed into setURLCrawlStatus is malformed:" , e, false);
+               ExceptionHandling.handleMalformedURLException("The URL string passed into setURLStatus is malformed... we will skip this one.:" , e);
                 return true;
             }
         } else {
@@ -161,6 +167,22 @@ public class CrawlUtils {
         ArrayList<String> list = new ArrayList<String>();
         list.addAll(urls.keySet());
         return list;
+    }
+
+    //make sure that the urlString is not an image ir unsupported doc
+    private boolean checkForNonDocUrl(String url) {
+
+        boolean isImage = false;
+
+        List<String> imageTypes = Arrays.asList("png", "jpg", "gif", "pdf");
+        for (String type : imageTypes) {
+            if (url.contains(type)) {
+                isImage = true;
+            }
+        }
+
+        return isImage;
+
     }
 
 }
