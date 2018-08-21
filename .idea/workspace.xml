@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8635403-e32f-49b8-a1b0-0e942f7f6928" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/tests/testBadHTML.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web_Crawler/main/CrawlUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web_Crawler/main/CrawlUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web_Crawler/main/ExceptionHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web_Crawler/main/ExceptionHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlUtilsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web_Crawler/tests/CrawlUtilsTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/CrawlUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CrawlUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ExceptionHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ExceptionHandling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests/CrawlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CrawlTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/CrawlUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CrawlUtilsTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,14 +38,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="7" />
-          <entry key="java" value="1034" />
+          <entry key="java" value="1046" />
           <entry key="md" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="7" />
-          <entry key="JAVA" value="1034" />
+          <entry key="JAVA" value="1046" />
           <entry key="PLAIN_TEXT" value="95" />
         </counts>
       </usages-collector>
@@ -66,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/tests/CrawlTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+              <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/CrawlUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="151" column="115" selection-start-line="151" selection-start-column="115" selection-end-line="151" selection-end-column="115" />
+            <state relative-caret-position="360">
+              <caret line="176" column="69" selection-start-line="176" selection-start-column="69" selection-end-line="176" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -212,7 +203,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534810489579" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534810843308" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -377,21 +368,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CrawlUtilsTest_testUpdateUrlListExceptionHanding - 2018.08.20 at 17h 49m 22s.xml">
-      <configuration name="CrawlUtilsTest.testUpdateUrlListExceptionHanding" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CrawlUtilsTest_testUpdateUrlListExceptionHanding - 2018.08.20 at 17h 50m 41s.xml">
-      <configuration name="CrawlUtilsTest.testUpdateUrlListExceptionHanding" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CrawlUtilsTest_testUpdateUrlListExceptionHanding - 2018.08.20 at 17h 51m 21s.xml">
-      <configuration name="CrawlUtilsTest.testUpdateUrlListExceptionHanding" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CrawlUtilsTest_testUpdateUrlListExceptionHanding - 2018.08.20 at 17h 53m 48s.xml">
-      <configuration name="CrawlUtilsTest.testUpdateUrlListExceptionHanding" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CrawlUtilsTest_testUpdateUrlListBadLinkImageHandling - 2018.08.20 at 17h 54m 30s.xml">
-      <configuration name="CrawlUtilsTest.testUpdateUrlListBadLinkImageHandling" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CrawlTest_testCrawlSuccess - 2018.08.20 at 17h 56m 28s.xml">
       <configuration name="CrawlTest.testCrawlSuccess" configurationId="JUnit" />
     </history-entry>
@@ -406,6 +382,21 @@
     </history-entry>
     <history-entry file="CrawlTest - 2018.08.20 at 18h 13m 14s.xml">
       <configuration name="CrawlTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CrawlTest_testCrawlSuccess - 2018.08.20 at 18h 14m 47s.xml">
+      <configuration name="CrawlTest.testCrawlSuccess" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CrawlTest_testCrawlSuccess - 2018.08.20 at 18h 14m 52s.xml">
+      <configuration name="CrawlTest.testCrawlSuccess" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CrawlTest_testCrawlSuccess - 2018.08.20 at 18h 17m 55s.xml">
+      <configuration name="CrawlTest.testCrawlSuccess" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CrawlTest_testCrawlSuccess - 2018.08.20 at 18h 19m 05s.xml">
+      <configuration name="CrawlTest.testCrawlSuccess" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CrawlTest_testCrawlSuccess - 2018.08.20 at 18h 19m 59s.xml">
+      <configuration name="CrawlTest.testCrawlSuccess" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -450,6 +441,14 @@
           <url>file://$PROJECT_DIR$/src/tests/CrawlTest.java</url>
           <line>8</line>
           <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/tests/CrawlTest.java</url>
+          <line>11</line>
+          <properties class="tests.CrawlTest" method="testCrawlSuccess">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -509,8 +508,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/CrawlUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="151" column="115" selection-start-line="151" selection-start-column="115" selection-end-line="151" selection-end-column="115" />
+        <state relative-caret-position="360">
+          <caret line="176" column="69" selection-start-line="176" selection-start-column="69" selection-end-line="176" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -520,7 +519,7 @@
     <entry file="file://$PROJECT_DIR$/src/tests/CrawlTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -12,7 +12,7 @@ public class CrawlTest {
     public void testCrawlSuccess() {
 
         //returns an arraylist of all urls that are found from the provided domain.
-        new Crawl("https://google.com");
+        new Crawl("http://textureshair.net/");
 
     }
 

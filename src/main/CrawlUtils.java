@@ -174,7 +174,7 @@ public class CrawlUtils {
 
         boolean isImage = false;
 
-        List<String> imageTypes = Arrays.asList("png", "jpg", "gif", "pdf");
+        List<String> imageTypes = Arrays.asList("png", "jpg", "jpeg", "gif", "pdf");
         for (String type : imageTypes) {
             if (url.contains(type)) {
                 isImage = true;
