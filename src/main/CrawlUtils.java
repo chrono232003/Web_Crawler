@@ -94,16 +94,16 @@ public class CrawlUtils {
             }
         }
 
-        //grab all images from the document and store within the urlMap
-        Elements imagesOnPage = doc.select("img");
-        for (Element image : imagesOnPage) {
-            String imageString = image.attr("src");
-            //set the image to true so that the iterator does not try to crawl the image url.
-            if (!imageString.equals("") && !urls.containsKey(imageString)) {
-                urls.put(imageString, true);
-            }
-
-        }
+//        //grab all images from the document and store within the urlMap
+//        Elements imagesOnPage = doc.select("img");
+//        for (Element image : imagesOnPage) {
+//            String imageString = image.attr("src");
+//            //set the image to true so that the iterator does not try to crawl the image url.
+//            if (!imageString.equals("") && !urls.containsKey(imageString)) {
+//                urls.put(imageString, true);
+//            }
+//
+//        }
 
         return urls;
     }
