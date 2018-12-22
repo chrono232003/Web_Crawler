@@ -6,6 +6,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.File;
+import org.apache.commons.io.FileUtils;
+
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,7 +28,7 @@ public class CrawlUtils {
         //check the initial url for validity
         if (initialUrlIsValid(initialUrl)) {
 
-            //initaite the iteration through the urlMap with the first inital url
+            //initiate the iteration through the urlMap with the first inital url
             if (initialUrl != null) {
                 INITIAL_URL = initialUrl;
                 urlMap.put(initialUrl, false);
@@ -52,7 +56,8 @@ public class CrawlUtils {
                 }
             }
 
-            System.out.println(finalUrlList(urlMap));
+            //System.out.println(finalUrlList(urlMap));
+            writeToFile(finalUrlList(urlMap).toString());
 
         }
     }
@@ -183,6 +188,17 @@ public class CrawlUtils {
 
         return isImage;
 
+    }
+
+    private void writeToFile(String content) {
+        try {
+            File file = new File("C:/Users/chron/Documents/urls.txt");
+            //String fileContext = FileUtils.readFileToString(file);
+            //fileContext = fileContext.replaceAll("_PLACEHOLDER_", "VALUE-TO-BE-REPLACED");
+            FileUtils.write(file, content, "UTF-8");
+        } catch (IOException e) {
+            System.out.println("there was an error saving to the file: " + e);
+        }
     }
 
 }

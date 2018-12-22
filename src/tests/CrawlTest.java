@@ -1,12 +1,11 @@
 package tests;
 
 import main.Crawl;
-import org.junit.jupiter.api.Test;
 
 
 public class CrawlTest {
 
-    @Test
+    //@Test
     public void testCrawlSuccess() {
 
         //returns an arraylist of all urls that are found from the provided domain.
@@ -14,7 +13,7 @@ public class CrawlTest {
 
     }
 
-    @Test
+    //@Test
     public void testCrawlMalformedInitalUrl() {
 
         //returns an arraylist of all urls that are found from the provided domain.
