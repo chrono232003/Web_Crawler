@@ -5,11 +5,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.io.File;
-import org.apache.commons.io.FileUtils;
-
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,7 +18,7 @@ public class CrawlUtils {
     HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
     private String INITIAL_URL;
 
-    void init(String initialUrl) {
+    String init(String initialUrl) {
 
         //check the initial url for validity
         if (initialUrlIsValid(initialUrl)) {
@@ -57,8 +52,11 @@ public class CrawlUtils {
             }
 
             //System.out.println(finalUrlList(urlMap));
-            writeToFile(finalUrlList(urlMap).toString());
+            return finalUrlList(urlMap).toString();
 
+
+        } else {
+            return "No Data Found";
         }
     }
 
@@ -190,15 +188,15 @@ public class CrawlUtils {
 
     }
 
-    private void writeToFile(String content) {
-        try {
-            File file = new File("C:/Users/chron/Documents/urls.txt");
-            //String fileContext = FileUtils.readFileToString(file);
-            //fileContext = fileContext.replaceAll("_PLACEHOLDER_", "VALUE-TO-BE-REPLACED");
-            FileUtils.write(file, content, "UTF-8");
-        } catch (IOException e) {
-            System.out.println("there was an error saving to the file: " + e);
-        }
-    }
+//    private void writeToFile(String content) {
+//        try {
+//            File file = new File("C:/Users/chron/Documents/urls.txt");
+//            StringBuilder fileContext = new StringBuilder(FileUtils.readFileToString(file, "UTF-8"));
+//            fileContext.append(content);
+//            FileUtils.write(file, fileContext.toString(), "UTF-8");
+//        } catch (IOException e) {
+//            System.out.println("there was an error saving to the file: " + e);
+//        }
+//    }
 
 }
