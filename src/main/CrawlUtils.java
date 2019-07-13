@@ -7,33 +7,45 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CrawlUtils {
 
     //create a hashmap to store the url as key and isVisited as value. Also, a hashmap will prevent duplicate urls.
-    HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
-    private String INITIAL_URL;
+    private HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
+    private String initialUrl;
+    private EnumUtils.Type crawlType;
 
-    String init(String initialUrl) {
+    public CrawlUtils(String initialUrl, EnumUtils.Type crawlType) {
+        this.initialUrl = initialUrl;
+        this.crawlType = crawlType;
+    }
+
+    /**
+     * This is the main function which will return one of two lists depending on the crawlType param
+     * URL list - get all the urls in a given domain
+     * Email list - get all emails in a given domain.
+     * @return
+     */
+    public String init() {
+
+        System.out.println("Starting the process with " + initialUrl + " ...");
 
         //check the initial url for validity
-        if (initialUrlIsValid(initialUrl)) {
+        if (initialUrlIsValidAndNotNull(initialUrl)) {
 
-            //initiate the iteration through the urlMap with the first inital url
-            if (initialUrl != null) {
-                INITIAL_URL = initialUrl;
-                urlMap.put(initialUrl, false);
-            }
+            //initiate the iteration through the urlMap with the first initial url
+            urlMap.put(initialUrl, false);
 
+            System.out.println("Added initial URL to map");
 
             while (true) {
                 Document doc;
-
                 String nextUrl = getNextListUrl(urlMap);
+
+                System.out.println("Got next url: " + nextUrl);
 
                 if (nextUrl == null) {
                     break;
@@ -51,8 +63,15 @@ public class CrawlUtils {
                 }
             }
 
-            //System.out.println(finalUrlList(urlMap));
-            return finalUrlList(urlMap).toString();
+            //now that we have the final url list... see if we need the emails instead.
+            System.out.println("this is the crawlType: " + crawlType);
+            if (crawlType == EnumUtils.Type.URLS) {
+                return finalUrlList(urlMap).toString();
+            } else if (crawlType == EnumUtils.Type.EMAILS) {
+                return getEmailList(finalUrlList(urlMap));
+            } else {
+                return "Something went wrong.";
+            }
 
 
         } else {
@@ -93,7 +112,7 @@ public class CrawlUtils {
             String linkString = link.absUrl("href");
             //though a hashmap has unique keys, we will still have to check for dups to not override the value.
             if (!linkString.equals("") && !urls.containsKey(linkString)) {
-                urls.put(linkString, setUrlCrawlStatus(linkString, INITIAL_URL));
+                urls.put(linkString, setUrlCrawlStatus(linkString, initialUrl));
             }
         }
 
@@ -109,6 +128,26 @@ public class CrawlUtils {
 //        }
 
         return urls;
+    }
+
+    public String getEmailList(List<String> urls) {
+
+        HashMap<String, Boolean> emails = new HashMap<String, Boolean>();
+        Iterator it = urls.iterator();
+        while (it.hasNext()) {
+            Document doc = getDocumentFromUrl((String) it.next());
+            Pattern p = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+");
+            Matcher matcher = p.matcher(doc.text());
+            while (matcher.find()) {
+                //though a hashmap has unique keys, we will still have to check for dups to not override the value.
+                if (!matcher.group().equals("") && !emails.containsKey(matcher.group())) {
+                    emails.put(matcher.group(), true);
+                }
+            }
+        }
+
+
+        return emails.toString();
     }
 
     public String getNextListUrl(HashMap<String, Boolean> urls) {
@@ -136,11 +175,14 @@ public class CrawlUtils {
      * UTILITIES
      */
 
-    private boolean initialUrlIsValid(String initialUrl) {
+    private boolean initialUrlIsValidAndNotNull(String initialUrl) {
         try {
-            URL url = new URL(initialUrl);
+            System.out.println("Checking the url ...");
+            new URL(initialUrl);
+            System.out.println("URL is good");
             return true;
         } catch (MalformedURLException e) {
+            System.out.println("URL is bad, aborting ...");
             ExceptionHandling.handleMalformedURLException("The input url is invalid.", e);
             return false;
         }

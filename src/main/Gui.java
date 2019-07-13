@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Gui extends Frame {
+
+
     Gui() {
         setTitle("Renegade Web Crawler");
         setLayout(new GridLayout());
@@ -20,6 +22,12 @@ public class Gui extends Frame {
         t.setColumns(30);
         add(t);
 
+        Choice c=new Choice();
+        c.setBounds(100,100, 75,75);
+        c.add(EnumUtils.Type.URLS.type);
+        c.add(EnumUtils.Type.EMAILS.type);
+        add(c);
+
         Button b = new Button("Crawl");
         TextArea result = new TextArea();
         //add button functionality
@@ -27,8 +35,8 @@ public class Gui extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //spider through urls using the urlMap as an engine. It will always contain te initial url first and then spider from there.
-                CrawlUtils crawlUtils = new CrawlUtils();
-                result.setText(crawlUtils.init(t.getText()));
+                CrawlUtils crawlUtils = new CrawlUtils(t.getText(), EnumUtils.Type.valueOf(c.getSelectedItem()));
+                result.setText(crawlUtils.init());
             }
         });
         add(b);
