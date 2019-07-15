@@ -5,6 +5,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import utils.EnumUtils;
+
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
@@ -16,9 +19,9 @@ public class CrawlUtils {
     //create a hashmap to store the url as key and isVisited as value. Also, a hashmap will prevent duplicate urls.
     private HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
     private String initialUrl;
-    private EnumUtils.Type crawlType;
+    private EnumUtils.SearchType crawlType;
 
-    public CrawlUtils(String initialUrl, EnumUtils.Type crawlType) {
+    public CrawlUtils(String initialUrl, EnumUtils.SearchType crawlType) {
         this.initialUrl = initialUrl;
         this.crawlType = crawlType;
     }
@@ -39,13 +42,12 @@ public class CrawlUtils {
             //initiate the iteration through the urlMap with the first initial url
             urlMap.put(initialUrl, false);
 
-            System.out.println("Added initial URL to map");
+            System.out.println("Fetching All the URLS on the website...");
 
             while (true) {
+
                 Document doc;
                 String nextUrl = getNextListUrl(urlMap);
-
-                System.out.println("Got next url: " + nextUrl);
 
                 if (nextUrl == null) {
                     break;
@@ -65,10 +67,27 @@ public class CrawlUtils {
 
             //now that we have the final url list... see if we need the emails instead.
             System.out.println("this is the crawlType: " + crawlType);
-            if (crawlType == EnumUtils.Type.URLS) {
+            if (crawlType == EnumUtils.SearchType.URLS) {
                 return finalUrlList(urlMap).toString();
-            } else if (crawlType == EnumUtils.Type.EMAILS) {
-                return getEmailList(finalUrlList(urlMap));
+            } else if (crawlType == EnumUtils.SearchType.EMAILS) {
+                String finalEmailList = getEmailList(finalUrlList(urlMap));
+                if (!finalEmailList.equals("{}")) {
+                    try {
+
+                        File file = new File("append.txt");
+                        FileWriter fr = new FileWriter(file, true);
+                        BufferedWriter br = new BufferedWriter(fr);
+                        PrintWriter pr = new PrintWriter(br);
+                        pr.println(finalEmailList);
+                        pr.close();
+                        br.close();
+                        fr.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                return finalEmailList;
             } else {
                 return "Something went wrong.";
             }
@@ -131,23 +150,34 @@ public class CrawlUtils {
     }
 
     public String getEmailList(List<String> urls) {
-
+        System.out.println("Fetching the emails from the urls in the list...");
         HashMap<String, Boolean> emails = new HashMap<String, Boolean>();
         Iterator it = urls.iterator();
         while (it.hasNext()) {
-            Document doc = getDocumentFromUrl((String) it.next());
-            Pattern p = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+");
-            Matcher matcher = p.matcher(doc.text());
-            while (matcher.find()) {
-                //though a hashmap has unique keys, we will still have to check for dups to not override the value.
-                if (!matcher.group().equals("") && !emails.containsKey(matcher.group())) {
-                    emails.put(matcher.group(), true);
+            try {
+                Document doc = getDocumentFromUrl((String) it.next());
+                if (doc != null) {
+                    Pattern p = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+");
+                    Matcher matcher = p.matcher(doc.text());
+                    while (matcher.find()) {
+                        //though a hashmap has unique keys, we will still have to check for dups to not override the value.
+                        if (!matcher.group().equals("") && !emails.containsKey(matcher.group())) {
+                            emails.put(matcher.group(), true);
+                        }
+                    }
                 }
+            } catch (NoSuchElementException e) {
+                System.out.println("The document could not be generated.");
+            } catch (Exception e) {
+                System.out.println("url failed to provide document: " + it.next());
             }
         }
-
-
-        return emails.toString();
+        StringBuilder sb = new StringBuilder();
+        System.out.println("Finished fetching emails");
+        for ( String email : emails.keySet() ) {
+            sb.append(email + "\n");
+        }
+        return sb.toString();
     }
 
     public String getNextListUrl(HashMap<String, Boolean> urls) {

@@ -1,4 +1,4 @@
-package tests;
+package tests.main;
 
 import main.Crawl;
 import org.junit.Test;

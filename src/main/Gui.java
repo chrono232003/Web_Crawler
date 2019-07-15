@@ -3,6 +3,9 @@ package main;
 import java.awt.*;
 import java.awt.event.*;
 
+import crawlthread.CrawlThread;
+import utils.EnumUtils;
+
 public class Gui extends Frame {
 
 
@@ -24,8 +27,9 @@ public class Gui extends Frame {
 
         Choice c=new Choice();
         c.setBounds(100,100, 75,75);
-        c.add(EnumUtils.Type.URLS.type);
-        c.add(EnumUtils.Type.EMAILS.type);
+        c.add(EnumUtils.SearchType.URLS.type);
+        c.add(EnumUtils.SearchType.EMAILS.type);
+        c.add(EnumUtils.SearchType.CRAWL_EMAILS.type);
         add(c);
 
         Button b = new Button("Crawl");
@@ -34,9 +38,21 @@ public class Gui extends Frame {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //spider through urls using the urlMap as an engine. It will always contain te initial url first and then spider from there.
-                CrawlUtils crawlUtils = new CrawlUtils(t.getText(), EnumUtils.Type.valueOf(c.getSelectedItem()));
-                result.setText(crawlUtils.init());
+                if (c.getSelectedItem().equals(EnumUtils.SearchType.CRAWL_EMAILS.type)) {
+                    CrawlThread thread = new CrawlThread(5);
+                    thread.createThreads();
+                    UrlBuilder builder = new UrlBuilder();
+                    int i = 0;
+                    while(i < 1) {
+                        CrawlUtils crawlUtils = new CrawlUtils(builder.getUrl(), EnumUtils.SearchType.EMAILS);
+                        result.setText("hi");
+                        i++;
+                    }
+                } else {
+                    //spider through urls using the urlMap as an engine. It will always contain te initial url first and then spider from there.
+                    CrawlUtils crawlUtils = new CrawlUtils(t.getText(), EnumUtils.SearchType.valueOf(c.getSelectedItem()));
+                    result.setText(crawlUtils.init());
+                }
             }
         });
         add(b);

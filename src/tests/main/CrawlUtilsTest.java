@@ -1,7 +1,7 @@
-package tests;
+package tests.main;
 
 import main.CrawlUtils;
-import main.EnumUtils;
+import utils.EnumUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
@@ -13,7 +13,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class CrawlUtilsTest {
 
@@ -22,7 +21,7 @@ public class CrawlUtilsTest {
 
     @Before
     public void setUp() {
-        crawlUtils = new CrawlUtils(TEST_URL, EnumUtils.Type.URLS);
+        crawlUtils = new CrawlUtils(TEST_URL, EnumUtils.SearchType.URLS);
     }
 
     @Test
@@ -52,6 +51,7 @@ public class CrawlUtilsTest {
 
         ArrayList<String> testUrlStrings = new ArrayList<String>();
         testUrlStrings.add("https://renegadewebdesign.com/");
+       testUrlStrings.add("https://renegadewebdesign.com/templates/one-page-smooth-theme/img/portfolio/fullsize/5.jpg");
 
         String emails = crawlUtils.getEmailList(testUrlStrings);
 
