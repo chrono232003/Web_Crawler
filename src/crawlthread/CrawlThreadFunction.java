@@ -1,6 +1,6 @@
 package crawlthread;
 
-import main.CrawlUtils;
+import utils.CrawlUtils;
 import utils.EnumUtils;
 import main.UrlBuilder;
 

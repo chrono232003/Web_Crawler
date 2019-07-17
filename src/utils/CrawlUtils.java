@@ -1,11 +1,11 @@
-package main;
+package utils;
 
+import main.ExceptionHandling;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import utils.EnumUtils;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -49,29 +49,28 @@ public class CrawlUtils {
                 Document doc;
                 String nextUrl = getNextListUrl(urlMap);
 
-                if (nextUrl == null) {
+                if(nextUrl != null) {
+                    //set the url value to true so that it does not get crawled again.
+                    urlMap.put(nextUrl, true);
+
+                    //get document from url or null if unable to acquire.
+                    doc = getDocumentFromUrl(nextUrl);
+
+                    //check if a document was acquired before updating the url list.
+                    if (doc != null) {
+                        urlMap = updateUrlList(doc, urlMap);
+                    }
+                } else {
                     break;
-                }
-
-                //set the url value to true so that it does not get crawled again.
-                urlMap.put(nextUrl, true);
-
-                //get document from url or null if unable to acquire.
-                doc = getDocumentFromUrl(nextUrl);
-
-                //check if a document was acquired before updating the url list.
-                if (doc != null) {
-                    urlMap = updateUrlList(doc, urlMap);
                 }
             }
 
             //now that we have the final url list... see if we need the emails instead.
-            System.out.println("this is the crawlType: " + crawlType);
             if (crawlType == EnumUtils.SearchType.URLS) {
                 return finalUrlList(urlMap).toString();
             } else if (crawlType == EnumUtils.SearchType.EMAILS) {
                 String finalEmailList = getEmailList(finalUrlList(urlMap));
-                if (!finalEmailList.equals("{}")) {
+                if (!(finalEmailList.equals("{}") || finalEmailList.equals(""))) {
                     try {
 
                         File file = new File("append.txt");
@@ -175,7 +174,7 @@ public class CrawlUtils {
         StringBuilder sb = new StringBuilder();
         System.out.println("Finished fetching emails");
         for ( String email : emails.keySet() ) {
-            sb.append(email + "\n");
+                sb.append(email + "\n");
         }
         return sb.toString();
     }
@@ -185,17 +184,17 @@ public class CrawlUtils {
         //make sure the the hashmap is populated as to avoid null pointer exceptions.
         if (urls != null && !urls.isEmpty()) {
 
-            String returnUrl = null;
-
+            //check to see if the given key value is false. If so, it has net been crawled yet.. so return it.
             for (String key : urls.keySet()) {
                 if (!urls.get(key)) {
-                    returnUrl = key;
-                    break;
+                    return key;
                 }
             }
 
-            return returnUrl;
+            //if we hit this, we are done crawling. return null
+            return null;
         } else {
+            //if we hit this, there is not a list that was passed in. We should not hit this.
             return null;
         }
 
@@ -207,7 +206,6 @@ public class CrawlUtils {
 
     private boolean initialUrlIsValidAndNotNull(String initialUrl) {
         try {
-            System.out.println("Checking the url ...");
             new URL(initialUrl);
             System.out.println("URL is good");
             return true;

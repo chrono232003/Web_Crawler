@@ -1,7 +1,7 @@
 package ui;
 
 import crawlthread.CrawlThread;
-import main.CrawlUtils;
+import utils.CrawlUtils;
 import utils.EnumUtils;
 import main.UrlBuilder;
 
@@ -9,14 +9,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Ui {
+public class Ui{
     private JFrame frame;
+    private final String TITLE = "Renegade Web Crawler";
+    private final String URL_SEARCH_LABEL = "Enter URL to crawl.";
 
     public Ui() {
         frame = new JFrame();
-        frame.setTitle("Renegade Web Crawler");
+        frame.setTitle(TITLE);
 
-        JLabel label = new JLabel("Enter URL to crawl.");
+        JLabel label = new JLabel(URL_SEARCH_LABEL);
         label.setBounds(10,10,150, 40);
         label.setVisible(true);
         frame.add(label);
@@ -74,11 +76,4 @@ public class Ui {
         frame.setLayout(null);
         frame.setVisible(true);
     }
-
-//    private <T extends JComponent> T createComponent(Class<T> component, int x, int y, int width, int height) {
-//        component.setBounds(10,100,500, 300);
-//        component.setVisible(true);
-//        //frame.add(textArea);
-//        return component;
-//    }
 }
