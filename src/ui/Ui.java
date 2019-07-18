@@ -6,7 +6,6 @@ import utils.EnumUtils;
 import main.UrlBuilder;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,29 +20,29 @@ public class Ui{
     private final String CRAWL_BUTTON = "CrawlButton";
     private final String URL_INPUT = "BaseUrlInput";
     private final String RESULT_TEXT_AREA = "results";
+    private final String SEARCH_TYPE_DD_NAME = "SearchTypeDropDown";
 
     public Ui() {
         frame = new JFrame();
         frame.setTitle(TITLE);
 
-        UiObjectBuilder.addLabel(frame, SEARCH_TYPE_LABEL, 10, 10, 150, 40);
+        UiObjectBuilder componentBuilder = new UiObjectBuilder(frame);
 
-        JComboBox dropDown = new JComboBox();
-        //text.setColumns(30);
-        dropDown.setBounds(150,10,200, 40);
-        dropDown.addItem(EnumUtils.SearchType.URLS.type);
-        dropDown.addItem(EnumUtils.SearchType.EMAILS.type);
-        dropDown.addItem(EnumUtils.SearchType.CRAWL_EMAILS.type);
-        dropDown.setVisible(true);
-        frame.add(dropDown);
+        ArrayList<String> dropdownValues = new ArrayList<>();
+        dropdownValues.add(EnumUtils.SearchType.URLS.type);
+        dropdownValues.add(EnumUtils.SearchType.EMAILS.type);
+        dropdownValues.add(EnumUtils.SearchType.CRAWL_EMAILS.type);
 
-        UiObjectBuilder.addLabel(frame, URL_SEARCH_LABEL, 10, 60, 150, 40);
-        UiObjectBuilder.addTextField(frame,URL_INPUT,150, 60, 200, 40);
-        UiObjectBuilder.addButton(frame, "Crawl", CRAWL_BUTTON, 320, 60, 100, 40);
-        UiObjectBuilder.addTextArea(frame, RESULT_TEXT_AREA, 10, 200, 500, 300);
+        componentBuilder.addLabel(SEARCH_TYPE_LABEL, 10, 10, 150, 40);
+        componentBuilder.addComboBox(SEARCH_TYPE_DD_NAME, dropdownValues, 150, 10, 200, 40);
+        componentBuilder.addLabel(URL_SEARCH_LABEL, 10, 60, 220, 40);
+        componentBuilder.addTextField(URL_INPUT,150, 60, 220, 40);
+        componentBuilder.addButton("Crawl", CRAWL_BUTTON, 380, 60, 100, 40);
+        componentBuilder.addTextArea(RESULT_TEXT_AREA, 10, 200, 580, 300);
 
         JTextArea textArea = (JTextArea) UiObjectGetter.searchAndRetrieveObjectByName(frame, RESULT_TEXT_AREA);
         JButton button = (JButton) UiObjectGetter.searchAndRetrieveObjectByName(frame, CRAWL_BUTTON);
+        JComboBox dropDown = (JComboBox) UiObjectGetter.searchAndRetrieveObjectByName(frame, SEARCH_TYPE_DD_NAME);
 
         dropDown.addActionListener(new ActionListener() {
             @Override
@@ -68,13 +67,7 @@ public class Ui{
                 } else {
                     JTextField text = (JTextField) UiObjectGetter.searchAndRetrieveObjectByName(frame, URL_INPUT);
                     String urlFieldValue = text.getText();
-//                    for (Component comp : frame.getContentPane().getComponents()) {
-//                        if (comp.getName() != null && comp.getName().equals("BaseUrlInput")) {
-//                            JTextField text = (JTextField) comp;
-//                            urlFieldValue = text.getText();
-//                        }
-//                    }
-                    System.out.println("this is the url text value: " + urlFieldValue);
+
                     //spider through urls using the urlMap as an engine. It will always contain te initial url first and then spider from there.
                     CrawlUtils crawlUtils = new CrawlUtils(urlFieldValue, EnumUtils.SearchType.valueOf((String)dropDown.getSelectedItem()));
                     textArea.setText(crawlUtils.init());
@@ -82,9 +75,9 @@ public class Ui{
             }
         });
 
-        frame.setSize(600,500);
-        //frame.setLayout(new GridLayout());//using no layout managers
-        frame.setLayout(null);
+        frame.setSize(600,600);
+        //frame.setLayout(new GridLayout());
+        frame.setLayout(null); //using no layout managers
         frame.setVisible(true);
     }
 }
