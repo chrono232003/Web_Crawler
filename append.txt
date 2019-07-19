@@ -27,11 +27,4 @@ contact@yourwebsite.com
 info@renegadewebdesign.com
 name@email.com
 
-contact@yourwebsite.com
-info@renegadewebdesign.com
-name@email.com
-
-contact@yourwebsite.com
-info@renegadewebdesign.com
-name@email.com
 

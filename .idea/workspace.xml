@@ -6,13 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8635403-e32f-49b8-a1b0-0e942f7f6928" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/tests/utils/CrawlUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/utils/CrawlUtilsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Ui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Ui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/UiObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UiObjectBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/UiObjectGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/UiObjectGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CrawlUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CrawlUtils.java" afterDir="false" />
-    </list>
+    <list default="true" id="b8635403-e32f-49b8-a1b0-0e942f7f6928" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -444,7 +438,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19083156" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
