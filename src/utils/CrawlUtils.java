@@ -67,7 +67,7 @@ public class CrawlUtils {
 
             //now that we have the final url list... see if we need the emails instead.
             if (crawlType == EnumUtils.SearchType.URLS) {
-                return finalUrlList(urlMap).toString();
+                return finalUrlList(urlMap);
             } else if (crawlType == EnumUtils.SearchType.EMAILS) {
                 String finalEmailList = getEmailList(finalUrlList(urlMap));
                 if (!(finalEmailList.equals("{}") || finalEmailList.equals(""))) {
@@ -148,10 +148,13 @@ public class CrawlUtils {
         return urls;
     }
 
-    public String getEmailList(List<String> urls) {
+    public String getEmailList(String urls) {
         System.out.println("Fetching the emails from the urls in the list...");
+        //convert string into list
+        String[] urlList = urls.split("\n");
+        ArrayList<String> urlArrayList = new ArrayList<String>(Arrays.asList(urlList));
         HashMap<String, Boolean> emails = new HashMap<String, Boolean>();
-        Iterator it = urls.iterator();
+        Iterator it = urlArrayList.iterator();
         while (it.hasNext()) {
             try {
                 Document doc = getDocumentFromUrl((String) it.next());
@@ -236,10 +239,15 @@ public class CrawlUtils {
         }
     }
 
-    ArrayList finalUrlList(HashMap<String, Boolean> urls) {
-        ArrayList<String> list = new ArrayList<String>();
-        list.addAll(urls.keySet());
-        return list;
+    String finalUrlList(HashMap<String, Boolean> urls) {
+        //ArrayList<String> list = new ArrayList<String>();
+        //list.addAll(urls.keySet());
+        //return list;
+        StringBuilder sb = new StringBuilder();
+        for ( String url : urls.keySet() ) {
+            sb.append(url + "\n");
+        }
+        return sb.toString();
     }
 
     //make sure that the urlString is not an image ir unsupported doc

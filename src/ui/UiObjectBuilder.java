@@ -40,8 +40,11 @@ public class UiObjectBuilder extends UiObject {
 
     void addTextArea(String name, int x, int y, int width, int height) {
         JTextArea textArea = new JTextArea();
-        baseComponent(textArea, name, x, y, width, height);
-        frame.add(textArea);
+        textArea.setName("TextArea");
+        JScrollPane scroll = new JScrollPane (textArea);
+        baseComponent(scroll, name, x, y, width, height);
+        frame.add(scroll);
+        //frame.add(textArea);
     }
 
 }

@@ -6,6 +6,7 @@ import utils.EnumUtils;
 import main.UrlBuilder;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Ui{
     //component names
     private final String CRAWL_BUTTON = "CrawlButton";
     private final String URL_INPUT = "BaseUrlInput";
-    private final String RESULT_TEXT_AREA = "results";
+    private final String RESULT_TEXT_PANE = "results";
     private final String SEARCH_TYPE_DD_NAME = "SearchTypeDropDown";
 
     public Ui() {
@@ -38,9 +39,8 @@ public class Ui{
         componentBuilder.addLabel(URL_SEARCH_LABEL, 10, 60, 220, 40);
         componentBuilder.addTextField(URL_INPUT,150, 60, 220, 40);
         componentBuilder.addButton("Crawl", CRAWL_BUTTON, 380, 60, 100, 40);
-        componentBuilder.addTextArea(RESULT_TEXT_AREA, 10, 200, 580, 300);
+        componentBuilder.addTextArea(RESULT_TEXT_PANE, 10, 200, 580, 300);
 
-        JTextArea textArea = (JTextArea) UiObjectGetter.searchAndRetrieveObjectByName(frame, RESULT_TEXT_AREA);
         JButton button = (JButton) UiObjectGetter.searchAndRetrieveObjectByName(frame, CRAWL_BUTTON);
         JComboBox dropDown = (JComboBox) UiObjectGetter.searchAndRetrieveObjectByName(frame, SEARCH_TYPE_DD_NAME);
 
@@ -54,6 +54,15 @@ public class Ui{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                //get the textarea object from the scroll pane
+                JTextArea textArea = null;
+                for (Component comp : frame.getContentPane().getComponents()) {
+                    if (comp.getName() != null && comp.getName().equals(RESULT_TEXT_PANE)) {
+                        textArea = (JTextArea) UiObjectGetter.searchAndRetrieveObjectByName((JScrollPane) comp, "TextArea");
+                    }
+                }
+
                 if (dropDown.getSelectedItem().equals(EnumUtils.SearchType.CRAWL_EMAILS.type)) {
                     CrawlThread thread = new CrawlThread(20);
                     thread.createThreads();

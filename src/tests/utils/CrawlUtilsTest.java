@@ -49,10 +49,10 @@ public class CrawlUtilsTest {
        @Test
         public void testUpdateEmailList() {
 
-            ArrayList<String> testUrlStrings = new ArrayList<String>();
-            testUrlStrings.add("https://renegadewebdesign.com/");
-           testUrlStrings.add("https://renegadewebdesign.com/templates/one-page-smooth-theme/img/portfolio/fullsize/5.jpg");
-
+            StringBuilder sb = new StringBuilder();
+            sb.append("https://renegadewebdesign.com/\n");
+            sb.append("https://renegadewebdesign.com/templates/one-page-smooth-theme/img/portfolio/fullsize/5.jpg\n");
+             String testUrlStrings = sb.toString();
             String emails = crawlUtils.getEmailList(testUrlStrings);
 
 
