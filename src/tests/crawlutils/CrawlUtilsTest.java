@@ -1,5 +1,7 @@
-package tests.utils;
+package tests.crawlutils;
 
+import crawlutils.CrawlInit;
+import crawlutils.CrawlUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
@@ -9,25 +11,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import utils.EnumUtils;
 
 public class CrawlUtilsTest {
     public static class CrawlUtilsTestTest {
 
-        private utils.CrawlUtils crawlUtils;
+        private CrawlUtils crawlUtils;
         private final String TEST_URL = "http://google.com";
 
         @Before
         public void setUp() {
-            crawlUtils = new utils.CrawlUtils(TEST_URL, EnumUtils.SearchType.URLS);
-        }
-
-        @Test
-        public void testInit() {
-            String result = crawlUtils.init();
-            System.out.print(result);
+            crawlUtils = new CrawlUtils(EnumUtils.SearchType.URLS);
         }
 
         @Test
@@ -82,7 +77,7 @@ public class CrawlUtilsTest {
             String htmlString = contentBuilder.toString();
             Document doc = Jsoup.parse(htmlString);
 
-            urlMap = crawlUtils.updateUrlList(doc, urlMap);
+            urlMap = crawlUtils.updateUrlList(doc, urlMap,"http://www.example.com");
 
 
             System.out.println(urlMap);
@@ -110,7 +105,7 @@ public class CrawlUtilsTest {
             String htmlString = contentBuilder.toString();
             Document doc = Jsoup.parse(htmlString);
 
-            urlMap = crawlUtils.updateUrlList(doc, urlMap);
+            urlMap = crawlUtils.updateUrlList(doc, urlMap, "http://www.example.com");
 
 
             System.out.println(urlMap);

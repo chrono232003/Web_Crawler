@@ -2,16 +2,20 @@ package ui;
 import java.awt.*;
 
 public class UiObject {
-    Component baseComponent(Component component, int x, int y, int width, int height) {
+    //overload base component to handle many different param configs
+
+    //without name parameter
+    Component baseComponent(Component component, Boolean initialVisibility,  int x, int y, int width, int height) {
         component.setBounds(x,y,width,height);
-        component.setVisible(true);
+        component.setVisible(initialVisibility);
         return component;
     }
 
-    Component baseComponent(Component component, String name, int x, int y, int width, int height) {
+    //with name parameter
+    Component baseComponent(Component component, String name, Boolean initialVisibility, int x, int y, int width, int height) {
         component.setBounds(x,y,width,height);
         component.setName(name);
-        component.setVisible(true);
+        component.setVisible(initialVisibility);
         return component;
     }
 }

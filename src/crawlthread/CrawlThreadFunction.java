@@ -1,27 +1,32 @@
 package crawlthread;
 
-import utils.CrawlUtils;
+import crawlutils.CrawlInit;
+import crawlutils.CrawlUtils;
 import utils.EnumUtils;
-import main.UrlBuilder;
+import main.RandomUrlBuilder;
 
 public class CrawlThreadFunction extends Thread {
+
+    //constructor if argument is passed in
+    public  CrawlThreadFunction() {}
+
+
     public void run()
     {
-        try
-        {
-            UrlBuilder builder = new UrlBuilder();
+        try {
+            RandomUrlBuilder builder = new RandomUrlBuilder();
             int i = 0;
-            while(i < 10000) {
-                CrawlUtils crawlUtils = new CrawlUtils(builder.getUrl(), EnumUtils.SearchType.EMAILS);
-                crawlUtils.init();
+            while (i < 10000) {
+                CrawlInit crawlInit = new CrawlInit(builder.getUrl(), EnumUtils.SearchType.EMAILS);
+                crawlInit.init();
                 i++;
             }
 
         }
-        catch (Exception e)
-        {
-            // Throwing an exception
-            System.out.println ("Exception is caught");
-        }
+        catch(Exception e)
+            {
+                // Throwing an exception
+                System.out.println("Exception is caught");
+            }
     }
 }

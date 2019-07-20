@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Stream;
 
-public class UrlBuilder {
+public class RandomUrlBuilder {
 
     private final String FILE_PATH = "words.txt";
 

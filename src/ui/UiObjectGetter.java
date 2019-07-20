@@ -18,7 +18,6 @@ public class UiObjectGetter {
     static Component searchAndRetrieveObjectByName(JScrollPane scrollPane, String componentName) {
         JViewport viewPort = scrollPane.getViewport();
         for (Component comp : viewPort.getComponents()) {
-            System.out.println("these are the components inside the scrollPane: " + comp);
             if (comp.getName() != null && comp.getName().equals(componentName)) {
                 return comp;
             }

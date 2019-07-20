@@ -1,21 +1,21 @@
 package tests.main;
 
-import main.UrlBuilder;
+import main.RandomUrlBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class UrlBuilderTest {
+public class RandomUrlBuilderTest {
 
-    private UrlBuilder builder;
+    private RandomUrlBuilder builder;
     private String filePath;
 
     @Before
     public void setUp() {
         filePath = "words.txt";
-        builder = new UrlBuilder();
+        builder = new RandomUrlBuilder();
     }
 
     @Test

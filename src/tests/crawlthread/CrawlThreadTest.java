@@ -16,6 +16,6 @@ public class CrawlThreadTest {
 
     @Test
     public void setupThreads() {
-        threads.createThreads();
+        threads.createThreadsForRandomUrlEmailSearch();
     }
 }

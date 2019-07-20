@@ -1,4 +1,4 @@
-package utils;
+package crawlutils;
 
 import main.ExceptionHandling;
 import org.jsoup.HttpStatusException;
@@ -6,6 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import utils.EnumUtils;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -16,85 +17,10 @@ import java.util.regex.Pattern;
 
 public class CrawlUtils {
 
-    //create a hashmap to store the url as key and isVisited as value. Also, a hashmap will prevent duplicate urls.
-    private HashMap<String, Boolean> urlMap = new HashMap<String, Boolean>();
-    private String initialUrl;
-    private EnumUtils.SearchType crawlType;
+    EnumUtils.SearchType crawlType;
 
-    public CrawlUtils(String initialUrl, EnumUtils.SearchType crawlType) {
-        this.initialUrl = initialUrl;
+    public CrawlUtils(EnumUtils.SearchType crawlType) {
         this.crawlType = crawlType;
-    }
-
-    /**
-     * This is the main function which will return one of two lists depending on the crawlType param
-     * URL list - get all the urls in a given domain
-     * Email list - get all emails in a given domain.
-     * @return
-     */
-    public String init() {
-
-        System.out.println("Starting the process with " + initialUrl + " ...");
-
-        //check the initial url for validity
-        if (initialUrlIsValidAndNotNull(initialUrl)) {
-
-            //initiate the iteration through the urlMap with the first initial url
-            urlMap.put(initialUrl, false);
-
-            System.out.println("Fetching All the URLS on the website...");
-
-            while (true) {
-
-                Document doc;
-                String nextUrl = getNextListUrl(urlMap);
-
-                if(nextUrl != null) {
-                    //set the url value to true so that it does not get crawled again.
-                    urlMap.put(nextUrl, true);
-
-                    //get document from url or null if unable to acquire.
-                    doc = getDocumentFromUrl(nextUrl);
-
-                    //check if a document was acquired before updating the url list.
-                    if (doc != null) {
-                        urlMap = updateUrlList(doc, urlMap);
-                    }
-                } else {
-                    break;
-                }
-            }
-
-            //now that we have the final url list... see if we need the emails instead.
-            if (crawlType == EnumUtils.SearchType.URLS) {
-                return finalUrlList(urlMap);
-            } else if (crawlType == EnumUtils.SearchType.EMAILS) {
-                String finalEmailList = getEmailList(finalUrlList(urlMap));
-                if (!(finalEmailList.equals("{}") || finalEmailList.equals(""))) {
-                    try {
-
-                        File file = new File("append.txt");
-                        FileWriter fr = new FileWriter(file, true);
-                        BufferedWriter br = new BufferedWriter(fr);
-                        PrintWriter pr = new PrintWriter(br);
-                        pr.println(finalEmailList);
-                        pr.close();
-                        br.close();
-                        fr.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                return finalEmailList;
-            } else {
-                return "Something went wrong.";
-            }
-
-
-        } else {
-            return "No Data Found";
-        }
     }
 
     public Document getDocumentFromUrl(String url) {
@@ -122,7 +48,7 @@ public class CrawlUtils {
 
     }
 
-    public HashMap updateUrlList(Document doc, HashMap<String, Boolean> urls) {
+    public HashMap updateUrlList(Document doc, HashMap<String, Boolean> urls, String initialUrl) {
 
         //grab all links from the document and store within the urlMap
         Elements linksOnPage = doc.select("a[href]");
@@ -207,7 +133,7 @@ public class CrawlUtils {
      * UTILITIES
      */
 
-    private boolean initialUrlIsValidAndNotNull(String initialUrl) {
+    boolean initialUrlIsValidAndNotNull(String initialUrl) {
         try {
             new URL(initialUrl);
             System.out.println("URL is good");
@@ -276,5 +202,34 @@ public class CrawlUtils {
 //            System.out.println("there was an error saving to the file: " + e);
 //        }
 //    }
+
+    String generatedResponse(HashMap<String, Boolean> urlMap) {
+
+        //now that we have the final url list... see if we need the emails instead.
+        if (crawlType == EnumUtils.SearchType.URLS) {
+            return finalUrlList(urlMap);
+        } else if (crawlType == EnumUtils.SearchType.EMAILS) {
+            String finalEmailList = getEmailList(finalUrlList(urlMap));
+            if (!(finalEmailList.equals("{}") || finalEmailList.equals(""))) {
+                try {
+
+                    File file = new File("append.txt");
+                    FileWriter fr = new FileWriter(file, true);
+                    BufferedWriter br = new BufferedWriter(fr);
+                    PrintWriter pr = new PrintWriter(br);
+                    pr.println(finalEmailList);
+                    pr.close();
+                    br.close();
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return finalEmailList;
+        } else {
+            return "Something went wrong.";
+        }
+    }
 
 }
