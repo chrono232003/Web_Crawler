@@ -5,10 +5,10 @@ import crawlutils.CrawlUtils;
 import utils.EnumUtils;
 import main.RandomUrlBuilder;
 
-public class CrawlThreadFunction extends Thread {
+public class CrawlThreadFunctionRandomUrls extends Thread {
 
     //constructor if argument is passed in
-    public  CrawlThreadFunction() {}
+    public CrawlThreadFunctionRandomUrls() {}
 
 
     public void run()

@@ -19,6 +19,8 @@ public class CrawlUtils {
 
     EnumUtils.SearchType crawlType;
 
+    public CrawlUtils() {}
+
     public CrawlUtils(EnumUtils.SearchType crawlType) {
         this.crawlType = crawlType;
     }

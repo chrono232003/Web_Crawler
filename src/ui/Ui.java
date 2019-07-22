@@ -99,6 +99,7 @@ public class Ui{
 
                     //spider through urls using the urlMap as an engine. It will always contain te initial url first and then spider from there.
                     CrawlInit crawlInit = new CrawlInit(urlFieldValue, EnumUtils.SearchType.valueOf((String)dropDown.getSelectedItem()));
+                    textArea.setText("Grabbing the URLs from " + text.getText() + ". Please wait...");
                     textArea.setText(crawlInit.init());
                 }
             }

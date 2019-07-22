@@ -1,6 +1,7 @@
 package crawlutils;
 
 import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
+import crawlthread.CrawlThread;
 import org.jsoup.nodes.Document;
 import utils.EnumUtils;
 
@@ -45,22 +46,10 @@ public class CrawlInit {
 
     HashMap<String, Boolean> recusivelyUpdateUrlList(CrawlUtils crawlUtils, HashMap<String, Boolean> urlMap) {
         Document doc;
-        String nextUrl = crawlUtils.getNextListUrl(urlMap);
 
-        if(nextUrl != null) {
-            //set the url value to true so that it does not get crawled again.
-            urlMap.put(nextUrl, true);
-
-            //get document from url or null if unable to acquire.
-            doc = crawlUtils.getDocumentFromUrl(nextUrl);
-
-            //check if a document was acquired before updating the url list.
-            if (doc != null) {
-                urlMap = crawlUtils.updateUrlList(doc, urlMap, initialUrl);
-            }
-            recusivelyUpdateUrlList(crawlUtils, urlMap);
-        }
-        return urlMap;
+        //create threads to crawl quickly
+        CrawlThread thread = new CrawlThread(20);
+        return thread.CallableInnerThreadUrlSearch(urlMap, initialUrl);
     }
 
 }
