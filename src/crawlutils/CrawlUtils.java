@@ -11,6 +11,8 @@ import utils.EnumUtils;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -212,22 +214,33 @@ public class CrawlUtils {
             return finalUrlList(urlMap);
         } else if (crawlType == EnumUtils.SearchType.EMAILS) {
             String finalEmailList = getEmailList(finalUrlList(urlMap));
+            return finalEmailList;
+        } else if (crawlType == EnumUtils.SearchType.CRAWL_EMAILS) {
+            String finalEmailList = getEmailList(finalUrlList(urlMap));
             if (!(finalEmailList.equals("{}") || finalEmailList.equals(""))) {
                 try {
-
-                    File file = new File("append.txt");
-                    FileWriter fr = new FileWriter(file, true);
-                    BufferedWriter br = new BufferedWriter(fr);
-                    PrintWriter pr = new PrintWriter(br);
-                    pr.println(finalEmailList);
-                    pr.close();
-                    br.close();
-                    fr.close();
+//                    Path path = FileSystems.getDefault().getPath("./emails.txt");
+//                    File file = new File(path.toString());
+//                    FileWriter fr = new FileWriter(file, true);
+//                    BufferedWriter br = new BufferedWriter(fr);
+//                    PrintWriter pr = new PrintWriter(br);
+//                    pr.println(finalEmailList);
+//                    pr.close();
+//                    br.close();
+//                    fr.close();
+                    OutputStream os = null;
+                    try {
+                       os = new FileOutputStream(new File("./emails.txt"));
+                       os.write(finalEmailList.getBytes(), 0, finalEmailList.length());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        os.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-
             return finalEmailList;
         } else {
             return "Something went wrong.";

@@ -1,13 +1,11 @@
 package crawlthread;
 
 import crawlutils.CrawlInit;
-import crawlutils.CrawlUtils;
 import utils.EnumUtils;
 import main.RandomUrlBuilder;
 
 public class CrawlThreadFunctionRandomUrls extends Thread {
 
-    //constructor if argument is passed in
     public CrawlThreadFunctionRandomUrls() {}
 
 
@@ -17,7 +15,7 @@ public class CrawlThreadFunctionRandomUrls extends Thread {
             RandomUrlBuilder builder = new RandomUrlBuilder();
             int i = 0;
             while (i < 10000) {
-                CrawlInit crawlInit = new CrawlInit(builder.getUrl(), EnumUtils.SearchType.EMAILS);
+                CrawlInit crawlInit = new CrawlInit(builder.getUrl(), EnumUtils.SearchType.CRAWL_EMAILS);
                 crawlInit.init();
                 i++;
             }

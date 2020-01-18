@@ -93,7 +93,7 @@ public class Ui{
                 if (dropDown.getSelectedItem().equals(EnumUtils.SearchType.CRAWL_EMAILS.type)) {
                     CrawlThread thread = new CrawlThread(20);
                     thread.createThreadsForRandomUrlEmailSearch();
-                    textArea.setText("crawling the web for emails. The results will be stored in a local text file");
+                    textArea.setText("crawling the web for emails. The results will be stored in a local text file called emails.txt");
                 } else {
                     String urlFieldValue = text.getText();
 

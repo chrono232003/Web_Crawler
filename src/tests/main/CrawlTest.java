@@ -1,5 +1,6 @@
 package tests.main;
 
+import crawlthread.CrawlThread;
 import main.Crawl;
 import org.junit.Test;
 

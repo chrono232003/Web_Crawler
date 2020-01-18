@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 public class RandomUrlBuilder {
 
-    private final String FILE_PATH = "words.txt";
+    private final String FILE_PATH = "./words.txt";
 
     /**
      * gives back a url with a single word.

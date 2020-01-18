@@ -14,7 +14,7 @@ public class RandomUrlBuilderTest {
 
     @Before
     public void setUp() {
-        filePath = "words.txt";
+        filePath = "main/words.txt";
         builder = new RandomUrlBuilder();
     }
 
